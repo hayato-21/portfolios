@@ -15,9 +15,9 @@ class AddPicOthersToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->text('pic')->default("");
-            $table->integer('student_at_month')->default("");
+            $table->integer('student_at_month')->default(2);
             $table->string('nickname', 15)->default("");
-            $table->integer('hoping_way')->default("");
+            $table->integer('hoping_way')->default(2);
             $table->string('comments', 50)->default("");
         });
     }
