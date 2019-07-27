@@ -14,11 +14,11 @@ class AddPicOthersToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->text('pic')->default('pic');
-            $table->integer('student_at_month')->default(1);
-            $table->string('nickname', 15)->default('ニックネーム無し');
-            $table->integer('hoping_way')->default(2);
-            $table->string('comments', 50)->default('コメントはまだありません。');
+            $table->text('pic')->nullable()->change();
+            $table->integer('student_at_month')->nullable()->change();
+            $table->string('nickname', 15)->nullable()->change();
+            $table->integer('hoping_way')->nullable()->change();
+            $table->string('comments', 50)->nullable()->change();
         });
     }
 
@@ -30,11 +30,11 @@ class AddPicOthersToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('pic');
-            $table->dropColumn('student_at_month');
-            $table->dropColumn('nickname');
-            $table->dropColumn('hoping_way');
-            $table->dropColumn('comments');
+            $table->dropColumn('pic')->nullable(false)->change();
+            $table->dropColumn('student_at_month')->nullable(false)->change();
+            $table->dropColumn('nickname')->nullable(false)->change();
+            $table->dropColumn('hoping_way')->nullable(false)->change();
+            $table->dropColumn('comments')->nullable(false)->change();
         });
     }
 }
