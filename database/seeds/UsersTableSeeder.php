@@ -24,7 +24,6 @@ class UsersTableSeeder extends Seeder
             'nickname' => 'test太郎',
             'hoping_way' => 1,
             'comments' => 'ヤッホー',
-            'delete_flg' => 0,
         ]);
     }
     //シーダーで追加せず、通常通りにログイン認証から、登録すると、delete_flgが1になる。Not Nullのため？
