@@ -28,16 +28,6 @@ class StudyLogController extends Controller
         // ログイン情報に基づくスタディログを取得し、delete_flg=0かつ、スタディログと選ばれた言語を取得する。後ろに条件句を指定したら、リレーションで関連しているの絞り出せる。やりたいこと9完了
         $studylogs = $user->mystudylogs()->where('language_id',$current_language->id)->where('delete_flg', 0)->orderBy('date','desc')->get();
 
-        // $studylogs = $current_language->mystudylogs($login_user_id)->orderBy('date','desc')->get(); これは最初に試したこと
-
-        // 選ばれた言語に紐づくスタディログを取得する。(取得可能確認済み、この場合、indexの方に、Auth::user()->id===studylog->user_idと、delete_flg===0の記述が必要)
-        // $studylogs = $current_language->studylogs()->orderBy('date','desc')->get(); //やりたいこと4 降順に変える。→orderByを追加する。
-
-        // 下記は試したこと（やりたいこと9、ログインユーザーのみの記録を取得する。）
-        // $studylogs= Auth::user($studylogs)->studylogs()->get();
-        // ★ やりたいこと、ユーザーに紐づくスタディログを取得したい。→画面に表示させる時に、if文で、
-        //$studylogs = StudyLog::where('language_id', $current_language->id)->get();
-
         return view('studylogs/index', [
             'languages' => $languages, //注意、参照する際は、Keyを指定する。
             'current_language_id' => $current_language->id,
@@ -117,4 +107,3 @@ class StudyLogController extends Controller
         ]);
     }
 }
-//Route URL Controller Viewの表示と表示したいデータの引き渡し

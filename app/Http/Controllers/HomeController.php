@@ -32,28 +32,6 @@ class HomeController extends Controller
         return redirect()->route('studylogs.index', [
             'id' => $id,
         ]);
-        // 'id' => $current_language->id,
-
-        // 下記のは試したこと、やりたいこと8 新規登録後の勉強記録への誘導と言語の選択。残された課題
-        // 全ての言語を取得する
-        // $languages = Language::all();
-        // if(empty($id)){
-            // 初めにhtml&css言語を取得する(第二引数に$first=1)
-            // $current_language = Language::find($first);
-        // }else{
-            // 選ばれた言語を取得する
-            // $current_language = Language::find($id);
-        // }
-
-        // html&css言語を取得する→これだと画面で、html&cssの情報のまま。
-       //かと言って、int $idだと、最初の引数が返せない。→引数にデフォルト設定したら良いのでは？（だめ、デフォルトが変わらない。）→ homeへ飛ばした時に$idを渡す、(だめ、デフォルトと変わらない。)→$id,$first=1で分ける。（最初のデフォルト必ず指定しないといけない。）→
-
-       // Undefined variable: current_language home.blade.php
-       // 多分これは、いろんな場面で出てくる。
-       // 考えられるエラーは、イメージとして、index.blade.phpとhome.blade.phpでデータが衝突している。
-       // セッションに入っている値を理解していない。
-       // エラーの場合分けをしよう。
-       // 引数を4つリターンすると、ログアウト、会員登録画面、パスワード変更画面には、いける。
 
     }
     public function all()
@@ -64,11 +42,6 @@ class HomeController extends Controller
         $languages = Language::all();
         // デリートフラグが0で、かつ最新の記録をとる。12件ずつ勉強記録を取得する。
         $studylogs = Studylog::where('delete_flg', 0)->orderBy('date', 'desc')->paginate(12);
-        // スタディログに紐づくユーザー情報をとる(belong to)?
-        // foreach studylogs,studylog->user_id === user->id, foreach文の中に、for or foreach文を用意して、見つかった時点でbreakする。user->idのまとまりの変数。
-        // break,continue
-        // やりたいこと 10完了。
-
 
         // 選ばれた言語を取得する
         return view('all', [

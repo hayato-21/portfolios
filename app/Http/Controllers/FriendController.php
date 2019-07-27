@@ -16,11 +16,6 @@ class FriendController extends Controller
         $user_id = $id;
         // Idを元に、投稿者の情報を取得
         $user_detail = User::find($id);
-        // Idを元に画像の情報を取得
-        // $is_image = false;
-        // if (Storage::disk('local')->exists('public/profile_images/' .$user_id. '.jpg')) {
-        //     $is_image = true;
-        // }
         // 友達ステータス情報の取得の流れ
         // ログインしているユーザーのIDを取得
         $login_user_id = Auth::user()->id;

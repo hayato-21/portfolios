@@ -16,7 +16,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @if(!empty($friendOne)) <!-- こっちに問題がある。Undefined friendReceived -->
+                    @if(!empty($friendOne))
                         @foreach($friendOne as $key => $val)
                             @if(!empty($val['friendReceived']))
                                 <?php $friendReceived = $val['friendReceived']; ?>

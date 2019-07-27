@@ -65,24 +65,6 @@ class UserController extends Controller
     //これは一旦保留。
     // public function show($id)
     // {
-    //     // リンクで送信されたそれぞれのidを格納する。
-    //     $user_id = $id;
-    //     // Idを元に、投稿者の情報を取得
-    //     $user_detail = User::find($id);
-    //     // Idを元に画像の情報を取得
-    //     $is_image = true;
-    //     if (Storage::disk('local')->exists('public/profile_images/' .$user_id. '.jpg')) {
-    //         $is_image = true;
-    //     }
-    //     // 友達ステータス情報
-    //     $status = '';
-
-    //     return view('users.profileShow', [
-    //         'user_id' => $user_id,
-    //         'user_detail' => $user_detail,
-    //         'is_image' => $is_image,
-    //         'status' => $status,
-    //     ]);
     // }
 
     /**
@@ -93,15 +75,10 @@ class UserController extends Controller
      */
     public function edit()
     {
-        $user = Auth::user(); //セッションみたいなもの。ミドルウェア。Userの情報を格納している。
-        // 画像投稿
-        // $is_image = false;
-        // if (Storage::disk('local')->exists('public/profile_images/' .$user->id. '.jpg')) {
-        //     $is_image = true;
-        // }
+        $user = Auth::user();
+
         return view('users.profileEdit', [
             'user' => $user,
-            // 'is_image' => $is_image, //さっきのは、storeでis_imageを定義したが、editでは、それを受け取る引数がそもそもなかったから、直接profEditにも飛ばしているわけではなかったから。
         ]);
     }
 
@@ -127,9 +104,6 @@ class UserController extends Controller
         return redirect()->route('studylogs.index',[
             'id' => 1,
         ]);
-        // withにつめた値は、セッション変数を使って取り出す。
-        //User情報カラムことは、Auth::user()を使えば、簡単に使える
-
     }
 
     /**
