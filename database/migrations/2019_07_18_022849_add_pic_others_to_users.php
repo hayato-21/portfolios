@@ -14,12 +14,12 @@ class AddPicOthersToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->text('pic')->nullable()->change(); //null値を許容する //画像バイナリを使用するため、string→textに変更する。
-            $table->integer('student_at_month')->nullable()->change();
-            $table->string('nickname', 15)->nullable()->change();
-            $table->integer('hoping_way')->nullable()->change();
-            $table->string('comments', 50)->nullable()->change();
-            $table->tinyInteger('delete_flg')->default();
+            $table->text('pic')->default('pic');
+            $table->integer('student_at_month')->default('1');
+            $table->string('nickname', 15)->default('ニックネーム無し');
+            $table->integer('hoping_way')->default(2);
+            $table->string('comments', 50)->default('コメントはまだありません。');
+            $table->tinyInteger('delete_flg')->default(0);
         });
     }
 
